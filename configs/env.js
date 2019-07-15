@@ -19,7 +19,8 @@ const getEnvironment = () => {
 }
 
 const getPublicPath = () => {
-    const {TEST_ENV, UAT_ENV,NODE_ENV} = process.env
+    const { TEST_ENV, UAT_ENV, NODE_ENV } = process.env
+    console.log('------------->', NODE_ENV)
     let envPublicUrl = '/'
     if (NODE_ENV === 'production') {
         envPublicUrl = `//xmcdn.com/sr012018/${packageJson.name}/last/dist/`
