@@ -6,7 +6,10 @@ const resolveAppPath = relativePath => path.resolve(appDirectory,relativePath)
 const merge = require('webpack-merge')
 const commonWebpackConfig = require('./webpack.common')
 const TerserPlugin = require('terser-webpack-plugin')
+//CleanWebpackPlugin wrong use ⬇️
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+//CleanWebpackPlugin wrong use ⬆️
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const autoprefixer = require('autoprefixer') // postcss配置
@@ -31,7 +34,7 @@ const prodConfig = {
         ],
         //分割代码
         splitChunks: {
-            chunk: 'all',
+            chunks: 'all',
             name:'vendors'
         }
     },
@@ -66,18 +69,17 @@ const prodConfig = {
         ]
     },
     plugins: [
-        //压缩代码时删除 打包后的 dist 文件夹
-        new CleanWebpackPlugin(['dist'],{
-            root: appDirectory,
-            verbose: true,
-            dry: false
+        new CleanWebpackPlugin({
+          root: appDirectory,
+          verbose: true,
+          dry: false
         }),
-        //打包后压缩的 css文件
+    
         new MiniCssExtractPlugin({
-            filename: css/[name].css,
-            chunkFilename: css/[name].css
-        })
-    ]
+          filename: "css/[name].css",
+          chunkFilename: "css/[name].css"
+        }),
+      ]
 }
 
 const prodWebpackConfig = merge(commonWebpackConfig,prodConfig)

@@ -1,10 +1,10 @@
 import React, {Component } from 'react'
 import ReactDOM from 'react-dom'
-
+import './index.scss'
 class App extends React.Component{
     render() {
         return(
-            <div>hhhhch</div>
+            <div className="app">hhhhch</div>
         )
     }
 }

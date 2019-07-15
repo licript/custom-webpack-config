@@ -22,14 +22,14 @@ const getPublicPath = () => {
     const {TEST_ENV, UAT_ENV,NODE_ENV} = process.env
     let envPublicUrl = '/'
     if (NODE_ENV === 'production') {
-        envPublicUrl = `//s1.xmcdn.com/sr012018/${packageJson.name}/last/dist/`
+        envPublicUrl = `//xmcdn.com/sr012018/${packageJson.name}/last/dist/`
 
         if (TEST_ENV) {
-            envPublicUrl = `//static2.test.ximalaya.com/sr012018/${packageJson.name}/last/dist/`
+            envPublicUrl = `//test.ximalaya.com/sr012018/${packageJson.name}/last/dist/`
         }
 
         if (UAT_ENV) {
-            envPublicUrl = `//s1.uat.xmcdn.com/sr012018/${packageJson.name}/last/dist/`
+            envPublicUrl = `//xmcdn.com/sr012018/${packageJson.name}/last/dist/`
         }
     }
 
